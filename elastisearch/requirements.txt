@@ -1,0 +1,5 @@
+Django >= 1.9.6
+model_mommy >= 1.2.6
+names >= 0.3.0
+django-extensions >= 1.6.7
+
