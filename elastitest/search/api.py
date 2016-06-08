@@ -1,6 +1,8 @@
 from rest_framework.generics import ListAPIView, CreateAPIView, ListCreateAPIView
 from .models import PersonDb
 from .serialyzers import PersonSerializer
+from . import elasti
+
 
 
 class PersonList(ListAPIView):
@@ -21,6 +23,12 @@ class PersonCreate(ListCreateAPIView):
                                      'address': self.request.data['address']})
         if ser.is_valid():
             ser.save()
+            es = elasti.main()
+
+            es.create(index='person-index', doc_type='test-type', id=self.request.data['id'],
+                      body={'name': self.request.data['name'],
+                            'age': self.request.data['age'],
+                            'address': self.request.data['address']})
 
 
 class PersonDetailView(ListAPIView):

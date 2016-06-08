@@ -48,21 +48,21 @@ class Command(BaseCommand):
         return data
 
     def field_es_repr(self, field_name):
-                    config = self._meta.es_mapping['properties'][field_name]
-                    if hasattr(self, 'get_es_%s' % field_name):
-                        field_es_value = getattr(self, 'get_es_%s' % field_name)()
-                    else:
-                        if config['type'] == 'object':
-                            related_object = getattr(self, field_name)
-                            field_es_value = {}
-                            field_es_value['_id'] = related_object.pk
-                            for prop in config['properties'].keys():
-                                field_es_value[prop] = getattr(related_object, prop)
+        config = self._meta.es_mapping['properties'][field_name]
+        if hasattr(self, 'get_es_%s' % field_name):
+            field_es_value = getattr(self, 'get_es_%s' % field_name)()
+        else:
+            if config['type'] == 'object':
+                related_object = getattr(self, field_name)
+                field_es_value = {}
+                field_es_value['_id'] = related_object.pk
+                for prop in config['properties'].keys():
+                    field_es_value[prop] = getattr(related_object, prop)
 
-                        else:
-                            field_es_value = getattr(self, field_name)
+            else:
+                field_es_value = getattr(self, field_name)
 
-                    return field_es_value
+        return field_es_value
 
     def es_repr(self):
         data = {}

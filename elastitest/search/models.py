@@ -3,9 +3,8 @@ from __future__ import unicode_literals
 from django.db import models
 import django.db.models.options as options
 
-options.DEFAULT_NAMES = options.DEFAULT_NAMES \
-                        + ('es_index_name', 'es_type_name', 'es_mapping')
-# Create your models here.
+# options.DEFAULT_NAMES = options.DEFAULT_NAMES \
+#                         + ('es_index_name', 'es_type_name', 'es_mapping')
 
 
 class PersonDb(models.Model):
@@ -17,13 +16,13 @@ class PersonDb(models.Model):
     def __str__(self):
         return self.name
 
-    class Meta:
-        es_index_name = 'django_person'
-        es_type_name = 'person'
-        es_mapping = {
-            'properties': {
-                'name': {'type': 'string', 'index': 'not_analyzed'},
-                'address': {'type': 'string', 'index': 'not_analyzed'},
-                'age': {'type': 'short'},
-            }
-        }
+    # class Meta:
+    #     es_index_name = 'django_person'
+    #     es_type_name = 'person'
+    #     es_mapping = {
+    #         'properties': {
+    #             'name': {'type': 'string', 'index': 'not_analyzed'},
+    #             'address': {'type': 'string', 'index': 'not_analyzed'},
+    #             'age': {'type': 'short'},
+    #         }
+    #     }
