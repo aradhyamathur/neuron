@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Payment Gateway</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+
+<center >Payment Gateway</center>
+
+<br>
+
+<center>
+
+    <h3> Welcome </h3>
+    {% if uname %}
+    <h2> {{uname}} </h2>
+    {% else %}
+    <h2> User </h2>
+    {% endif %}
+
+{% if stat_log == 1 %}
+    <form action="/razor/purchase/" method="POST" >
+    <!-- Note that the amount is in paise = 50 INR -->
+    {% csrf_token %}
+        <meta charset="UTF-8">
+        <script
+        src="https://checkout.razorpay.com/v1/checkout.js"
+        data-key=" "
+        data-amount="5000"
+        data-buttontext="Pay with Razorpay"
+        data-name="Test Site"
+        data-description="Purchase Description"
+        data-image="https://your-awesome-site.com/your_logo.jpg"
+        data-prefill.name="random"
+        data-prefill.email="random"
+        data-theme.color="#F37254"
+    ></script><input type="hidden" value="Hidden Element" name="hidden">
+    </form>
+
+    <form action="/razor/logout" method="post">
+    {% csrf_token %}
+        <button class="btn btn-lg btn-primary ">Logout</button>
+    </form>
+
+{% else %}
+    <form class="btn btn-lg btn-primary " method="get" action="/razor/login">
+    <button  class="btn btn-lg btn-primary " type="submit">Login</button>
+    </form>
+    {% endif %}
+</center>
+
+</body>
+</html>

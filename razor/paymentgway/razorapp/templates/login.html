@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</head>
+
+
+
+<body>
+<div class="container">
+{%if stat_log == 2 %}
+    <h4>Check credentials</h4>
+{% endif %}
+
+<center>
+      <h2> Sign in</h2>
+    <form class="formsignin" method="post" action="/razor/logged/">
+        {%csrf_token%}
+        <input type="'text" id="inputEmail" class="form-control" style="width:30%;" name="uname">
+        <input type="password" id="inputEmail " class="form-control" style="width:30%;" name="password">
+        <button type="submit" class="btn btn-lg btn-primary">Login </button>
+
+    </form>
+</center>
+</div>
+</body>
+</html>
