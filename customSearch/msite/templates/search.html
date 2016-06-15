@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student search</title>
+</head>
+<body>
+{% if posts|length > 0 %}
+
+    <h2>Records Found : {{count}}</h2>
+    <!--{{posts}}-->
+    {% for post in posts %}
+        <br>
+        <h4>
+
+            Name - {{post.name}}
+            <br>
+            Rno - {{post.rno}}
+            <br>
+            Analysis - {{post.analysis}}
+        </h4>
+    {% endfor %}
+{% else %}
+    <h2>No records found </h2>
+{% endif %}
+
+</body>
+</html>

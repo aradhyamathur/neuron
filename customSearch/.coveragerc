@@ -1,0 +1,3 @@
+[run]
+source = customSearch/
+omit = '*tests*,*commands*,*migrations*,*admin*,*wsgi*'

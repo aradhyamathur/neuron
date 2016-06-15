@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Search</title>
+</head>
+<body>
+
+    <a href="/student/create/">Create Dummy Data </a>
+    <form action="/student/search/" method="post">
+          {%csrf_token%}
+        <input type="text" name="text">
+        <input type="submit">
+    </form>
+
+</body>
+</html>
